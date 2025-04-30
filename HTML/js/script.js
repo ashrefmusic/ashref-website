@@ -178,46 +178,6 @@
 
     });
 
-    // Ashref Edited or created
-    document.addEventListener('DOMContentLoaded', function() {
-        const subscribeButton = document.querySelector('.collect-email');
-        const form = document.querySelector('.block-subscribe form');
-    
-        if (subscribeButton) {
-            subscribeButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log("hani d5alt");
-    
-                const emailInput = form.querySelector('input[name="email"]');
-                const email = emailInput.value.trim();
-    
-                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
-                if (email === "") {
-                    alert('Please enter your email.');
-                } else if (!emailPattern.test(email)) {
-                    alert('Please enter a valid email address.');
-                } else {
-                    fetch('https://sheetdb.io/api/v1/gvnjw0jubmf2x', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({data: [{Email: email}]})
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        alert('Thank you for subscribing!');
-                        console.log(data);
-                        form.reset();
-                    })
-                    .catch(error => {
-                        alert('Oops, something went wrong.');
-                    });
-                }
-            });
-        }
-    });
 
     // Ashref Edited or created
     $('.useless').on('click', function(e) { 
@@ -235,44 +195,6 @@
 });
 
 
-
-    //Twitter setup
-
-    var config = {
-        "profile": {"screenName": 'mutationthemes'},
-        "domId": 'tweets',
-        "maxTweets": 3,
-        "showRetweet": false,
-        "showImages": false,
-        "showUser": true,
-        "showTime": true,
-        "customCallback": handleTweets
-    };
-
-    function handleTweets(tweets) {
-        var x = tweets.length;
-        var n = 0;
-        var element = $('.tweets');
-        var listOfTweets = $('<ul>').addClass("slides");
-        while (n < x) {
-            var thisTweet = $('<li>');
-            thisTweet.html(tweets[n]);
-            listOfTweets.append(thisTweet);
-            n++;
-        }
-        element.html(listOfTweets);
-        $('.tweets').flexslider({
-            animation: 'slide',
-            controlNav: true,
-            directionNav: false
-        });
-        return listOfTweets;
-    }
-    twitterFetcher.fetch(config);
-
-
-
-
     // Tabbed content 
 
     $(".block-tabs li").on("click", function() {
@@ -286,10 +208,6 @@
 
         }
     });
-
-
-   
-
 
 
     //Popup elements
